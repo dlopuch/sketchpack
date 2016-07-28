@@ -1,21 +1,33 @@
+
+const APP_ROOT = __dirname + '/public/js';
+
 module.exports = {
+  context: APP_ROOT,
   entry: {
-    app: ['./public/entry.js']
+    app: './entry.js',
+    alternateApp: './entry.js' // for demo only, replace with different entry file.
   },
   output: {
-    path: './public/',
-    filename: 'bundle.js'
+    path: './public/dist/',
+    filename: 'bundle.[name].js'
   },
   module: {
     preLoaders: [
-      { loader: 'jshint-loader',
+      { loader: 'eslint-loader',
         test: /\.js$/,
         exclude: /node_modules/
       }
     ],
     loaders: [
-      // { test: /\.css$/, loader: "style!css" }
+      { test: /\.js$/  , loader: 'babel', exclude: /node_modules/, query: {presets: ['es2015']}},
+      { test: /\.less$/, loader: "style!css!less" },
+
+      // Needed to load graphics in less, eg Bootstrap
+      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
     ]
+  },
+  resolve: {
+    root: APP_ROOT
   },
   devServer: {
     contentBase: './public/',
