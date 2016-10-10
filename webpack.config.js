@@ -4,8 +4,8 @@ const APP_ROOT = __dirname + '/public/js';
 module.exports = {
   context: APP_ROOT,
   entry: {
-    app: 'entry.js',
-    alternateApp: 'entry.js' // for demo only, remove or replace with different entry file if multiple entry files.
+    app: 'main.js',
+    alternateApp: 'main-alternate.js' // for demo only, remove or replace with different entry file if multiple entry files.
   },
   output: {
     path: './public/dist/',
