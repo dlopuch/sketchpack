@@ -4,7 +4,8 @@
   "description": "Using webpack for javascript sketches",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "echo \"\n\n================\n================\nSTARTING RELEASE BUILD INTO gh-pages BRANCH...\n\" && git checkout gh-pages && git merge master && NODE_ENV=production webpack --optimize-minimize --devtool none && cp public/dist/bundle.app.js ./ && cp public/index.html ./ && ON_DONE_MSG=\"\n\n================\nRELEASED! Ready to commit and push up.\" echo $ON_DONE_MSG"
   },
   "repository": {
     "type": "git",
