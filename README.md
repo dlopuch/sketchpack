@@ -4,10 +4,13 @@ Webpack frontend boilerplate for javascript sketching.  Includes:
 - npm workflow for dependencies
 - webpack for building your CommonJS or RequireJS files
 - ES6 transpilation via Babel
-- LESS compiling for CSS that becomes maintainable
 - eslint with AirBNB style rules 
 - watch server to rebuild on change
 - sourcemaps to trace through your code
+
+This boilerplate also includes frameworks that need boilerplate webpack config:
+- React (with production minification and example react app)
+- LESS compiling for CSS that becomes maintainable
 
 # To get started
 1. Fork me
