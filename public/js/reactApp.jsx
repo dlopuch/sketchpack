@@ -11,7 +11,7 @@ const DemoReactComponent = React.createClass({
         {process.env.NODE_ENV === 'production' ? (null) : (
           <div>
             And this block will get minified away in prod if react minification is working properly! <br/>
-            (Try it for yourself by running: <tt>NODE_ENV=production webpack-dev-server</tt>)
+            (Try it for yourself by running: <tt>NODE_ENV=production npm run start:dev</tt>)
           </div>
         )}
       </div>
