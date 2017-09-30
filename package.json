@@ -4,6 +4,7 @@
   "description": "Using webpack for javascript sketches",
   "main": "index.js",
   "scripts": {
+    "start:dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "echo \"\n\n================\n================\nSTARTING RELEASE BUILD INTO gh-pages BRANCH...\n\" && git checkout gh-pages && git merge master && NODE_ENV=production webpack --optimize-minimize --devtool none && cp public/dist/bundle.app.js ./ && cp public/index.html ./ && ON_DONE_MSG=\"\n\n================\nRELEASED! Ready to commit and push up.\" echo $ON_DONE_MSG"
   },
@@ -18,21 +19,23 @@
   },
   "homepage": "https://github.com/dlopuch/sketchpack",
   "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
     "css-loader": "^0.23.1",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
-    "eslint-loader": "^1.5.0",
+    "eslint-loader": "^1.9.0",
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
     "jsx-loader": "^0.13.2",
-    "less": "^2.7.1",
-    "less-loader": "^2.2.3",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   },
   "dependencies": {
     "react": "^15.3.2",

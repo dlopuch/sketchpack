@@ -31,20 +31,27 @@ module.exports = {
     alternateApp: 'main-alternate.js' // for demo only, remove or replace with different entry file if multiple entry files.
   },
   output: {
-    path: './public/dist/',
+    path: __dirname + '/public/dist/',
     filename: 'bundle.[name].js'
   },
   module: {
-    preLoaders: [
-      { loader: 'eslint-loader',
+    rules: [
+      {
+        enforce: 'pre',
+        loader: 'eslint-loader',
         test: /\.js$/,
         exclude: /node_modules/
-      }
-    ],
-    loaders: [
-      { test: /\.jsx?$/  , loader: 'babel', exclude: /node_modules/, query: {presets: ['es2015']}},
+      },
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/},
       { test: /\.jsx?$/, loader: 'jsx-loader?harmony', exclude: /node_modules/},
-      { test: /\.less$/, loader: "style!css!less" },
+      {
+        test: /\.less$/,
+        use: [
+          { loader: "style-loader" }, // creates style nodes from JS strings
+          { loader: "css-loader" }, // translates CSS into CommonJS
+          { loader: "less-loader", options: {} } // compiles Less to CSS
+        ],
+      },
 
       // Needed to load graphics in less, eg Bootstrap
       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
@@ -52,7 +59,10 @@ module.exports = {
   },
   plugins: PLUGINS,
   resolve: {
-    root: APP_ROOT
+    modules: [
+      APP_ROOT,
+      'node_modules',
+    ],
   },
   devServer: {
     contentBase: './public/',

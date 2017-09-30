@@ -14,12 +14,11 @@ This boilerplate also includes frameworks that need boilerplate webpack config:
 
 # To get started
 1. Fork me
-2. Change package.json to have your project settings
-3. Install webpack: `npm install -g webpack` (global to make webpack CLI available)
-4. Install dependencies: `npm install`
-5. Add some neat stuff to this project, eg `npm install --save lodash`
-6. Start up webpack watch server: `$ webpack-dev-server`
-7. Change files and make something awesome!
+1. Change package.json to have your project settings
+1. Install dependencies: `npm install` (this also install webpack and webpack-dev-server locally)
+1. Add some neat stuff to this project, eg `npm install --save lodash`
+1. Start up webpack-dev-server (watch server): `$ npm run start:dev`
+1. Change files and make something awesome!
 
 # To release
 Release script minifies build and sets it up in the `gh-pages` branch for GitHub Pages release.
