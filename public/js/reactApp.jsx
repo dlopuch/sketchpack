@@ -10,21 +10,21 @@ const DemoReactComponent = React.createClass({
         </div>
         {process.env.NODE_ENV === 'production' ? (null) : (
           <div>
-            And this block will get minified away in prod if react minification is working properly! <br/>
+            And this block will get minified away in prod if react minification is working properly! <br />
             (Try it for yourself by running: <tt>NODE_ENV=production npm run start:dev</tt>)
           </div>
         )}
       </div>
     );
-  }
+  },
 });
 
 module.exports = function ourReactApp() {
   ReactDOM.render(
     <div>
       <h1>React App</h1>
-      <DemoReactComponent/>
+      <DemoReactComponent styleViolation={ 'linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
     </div>,
-    document.getElementById('react_app')
+    document.getElementById('react_app'),
   );
-}
+};

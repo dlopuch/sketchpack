@@ -36,14 +36,22 @@ module.exports = {
   },
   module: {
     rules: [
+      // Pre-loader: lint .js and .jsx with eslint-loader
       {
+        test: /\.jsx?$/,
         enforce: 'pre',
         loader: 'eslint-loader',
-        test: /\.js$/,
         exclude: /node_modules/
       },
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/},
-      { test: /\.jsx?$/, loader: 'jsx-loader?harmony', exclude: /node_modules/},
+
+      // .js and .jsx: convert with babel
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+
+      // Put .less inline in package (TODO: switch to SASS)
       {
         test: /\.less$/,
         use: [
@@ -54,7 +62,10 @@ module.exports = {
       },
 
       // Needed to load graphics in less, eg Bootstrap
-      { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+      }
     ]
   },
   plugins: PLUGINS,

@@ -9,7 +9,7 @@ require('./style.less');
 window.onload = function onload() {
   console.log('not so fast, FIXME: this line is a linting violation (no semicolon)')
 
-  document.getElementById('content_div').innerHTML = `yo dan! ${content}`;
+  document.getElementById('content_div').innerHTML = `yo dan! Here's some content from another file: ${content}`;
 
   reactApp();
 };
