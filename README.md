@@ -1,18 +1,26 @@
 # sketchpack
-Webpack frontend boilerplate for javascript sketching.  Includes:
+Webpack+React+Redux+Babel frontend boilerplate for javascript sketching.  Includes:
 
 - npm workflow for dependencies
 - webpack for building your CommonJS or RequireJS files
 - ES6 transpilation via Babel
-- eslint with AirBNB style rules 
-- watch server to rebuild on change
+- eslint with AirBNB style rules (including JSX linting)
+  - See `.eslintrc.js` for disagreements and overrides more appropriate for sketches
+- watch-server to rebuild on change with `webpack-dev-server`
 - sourcemaps to trace through your code
 
 This boilerplate also includes frameworks that need boilerplate webpack config:
 - React (with production minification and example react app)
+- Redux app with some helpers (`react-redux`, `redux-actions`)
 - LESS compiling for CSS that becomes maintainable
 
-# To get started
+
+# Try It!
+`npm install`, then `npm run start:dev`, then [localhost:8080](http://localhost:8080).
+Note the linting demo.
+
+
+# To Use This As Boilerplate
 1. Fork me
 1. Change package.json to have your project settings
 1. Install dependencies: `npm install` (this also install webpack and webpack-dev-server locally)
@@ -20,7 +28,8 @@ This boilerplate also includes frameworks that need boilerplate webpack config:
 1. Start up webpack-dev-server (watch server): `$ npm run start:dev`
 1. Change files and make something awesome!
 
-# To release
+
+# Release Script
 Release script minifies build and sets it up in the `gh-pages` branch for GitHub Pages release.
 
 To setup, create the gh-pages branch: `git branch gh-pages`
@@ -30,6 +39,7 @@ To make a new release:
 2. Current checkout branch will have changed to `gh-pages`.
 3. (First time) Add any new files: `git status; git add xxx`
 4. Commit all changes: `git commit -am "new release"`
+
 
 # TODO:
 - Example less file

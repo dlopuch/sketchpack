@@ -1,30 +1,20 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-const DemoReactComponent = React.createClass({
-  render() {
-    return (
-      <div>
-        <div>
-          This text was rendered by a demo react component!
-        </div>
-        {process.env.NODE_ENV === 'production' ? (null) : (
-          <div>
-            And this block will get minified away in prod if react minification is working properly! <br />
-            (Try it for yourself by running: <tt>NODE_ENV=production npm run start:dev</tt>)
-          </div>
-        )}
-      </div>
-    );
-  },
-});
+import App from './components/App';
+import reducers from './reducers';
+
+let store = createStore(reducers);
+window.store = store;
+
 
 module.exports = function ourReactApp() {
-  ReactDOM.render(
-    <div>
-      <h1>React App</h1>
-      <DemoReactComponent styleViolation={ 'linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
-    </div>,
+  render(
+    <Provider store={store} >
+      <App />
+    </Provider>,
     document.getElementById('react_app'),
   );
 };
