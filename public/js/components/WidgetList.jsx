@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addWidget, removeWidget } from '../actions/widgetListActions';
+import { addWidget, asyncAddWidget, removeWidget } from '../actions/widgetListActions';
 
 const WidgetList = React.createClass({
   propTypes: {
-    widgetList: React.PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
+    widgetListState: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
     onAddClick: React.PropTypes.func.isRequired,
     onRemoveClick: React.PropTypes.func.isRequired,
   },
@@ -17,11 +17,16 @@ const WidgetList = React.createClass({
           <b>WidgetList</b>: This is a list of things:
         </p>
         <button onClick={this.props.onAddClick}>Add</button>
+        <button onClick={this.props.onAddAsyncClick} disabled={this.props.widgetListState.isFetching}>Add Async</button>
         <ul>
-          {this.props.widgetList.map((widget, i) => (
+          {this.props.widgetListState.list.map((widget, i) => (
             <WidgetItem key={JSON.stringify(widget)} itemId={i} widget={widget} onRemoveClick={this.props.onRemoveClick} />
           ))}
         </ul>
+        { this.props.widgetListState.isFetching ?
+          (<p><i>Fetching something asynchronously, please wait...</i></p>) :
+          null
+        }
       </div>
     );
   },
@@ -53,11 +58,12 @@ const WidgetItem = React.createClass({
 // Actions can be injected with the mapDispatchToActions() transform function.
 export default connect(
   // mapStateToProps():
-  state => ({ widgetList: state.widgetList }),
+  state => ({ widgetListState: state.widgetList }),
 
   // mapDispatchToProps(): This is how you connect your imported actions to the dispatch function
   dispatch => ({
     onAddClick: () => dispatch(addWidget(Math.random())),
+    onAddAsyncClick: () => dispatch(asyncAddWidget(Math.random())),
     onRemoveClick: i => dispatch(removeWidget(i)),
   }),
 

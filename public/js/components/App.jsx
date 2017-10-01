@@ -30,9 +30,9 @@ const App = () => (
         in <tt>reactApp.jsx</tt>, and look at the de-boilerplates actions and reducers created with <tt>redux-actions</tt>.
       </p>
 
-      <WidgetList styleViolation={ 'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
-
       <Counter />
+
+      <WidgetList styleViolation={ 'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
 
     </div>
 

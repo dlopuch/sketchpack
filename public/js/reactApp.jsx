@@ -1,12 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
 
-let store = createStore(reducers);
+let store = createStore(
+  reducers,
+  applyMiddleware(thunk), // allows asynchronous action dispatch, ie action-creators returning thunks (f's that accept dispatch as param)
+);
 window.store = store;
 
 

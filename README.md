@@ -2,17 +2,17 @@
 Webpack+React+Redux+Babel frontend boilerplate for javascript sketching.  Includes:
 
 - npm workflow for dependencies
-- webpack for building your CommonJS or RequireJS files
-- ES6 transpilation via Babel
-- eslint with AirBNB style rules (including JSX linting)
+- **Webpack** for building your CommonJS or RequireJS files
+- ES6 transpilation via **Babel**
+- `eslint` with AirBNB style rules (including JSX linting)
   - See `.eslintrc.js` for disagreements and overrides more appropriate for sketches
 - watch-server to rebuild on change with `webpack-dev-server`
-- sourcemaps to trace through your code
+- **sourcemaps** to trace through your code
 
 This boilerplate also includes frameworks that need boilerplate webpack config:
-- React (with production minification and example react app)
-- Redux app with some helpers (`react-redux`, `redux-actions`)
-- LESS compiling for CSS that becomes maintainable
+- **React** (with production minification and example react app)
+- **Redux** app with some helpers (`react-redux`, `redux-actions`, `redux-thunk` for async actions)
+- **LESS** compiling for CSS that becomes maintainable
 
 
 # Try It!

@@ -14,7 +14,7 @@ const Counter = React.createClass({
     return (
       <div>
         <p>
-          <b>Counter</b>: This is our counter:
+          <b>Counter</b>: This is a simple counter with two simple actions:
         </p>
         <button onClick={this.props.onIncrement}>Add</button>
         <button onClick={this.props.onDecrement}>Sub</button>
