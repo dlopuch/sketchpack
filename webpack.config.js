@@ -74,6 +74,7 @@ module.exports = {
       APP_ROOT,
       'node_modules',
     ],
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
     contentBase: './public/',

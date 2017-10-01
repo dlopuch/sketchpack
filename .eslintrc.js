@@ -22,8 +22,10 @@ module.exports = {
     "no-shadow": 0,
     "prefer-const": 0,
     "no-underscore-dangle": 0,
+    "no-continue": 0, // no guard-clauses airbnb? for realsies?
     "newline-per-chained-call": 0, // not appropriate for D3
     "key-spacing": 0, // I like making columns
+    "comma-spacing": 0, // I like making columns
     "space-before-function-paren": 0, // don't like that style
     "no-param-reassign": ["error", {"props": false} ], // let forEach's mutate objects
     "no-return-assign": ["error", "except-parens"], // Good rule, but creates confusion with arrow functions https://github.com/eslint/eslint/issues/5150
