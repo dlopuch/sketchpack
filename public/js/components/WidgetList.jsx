@@ -43,10 +43,23 @@ const WidgetItem = React.createClass({
 });
 
 
+// Note use of react-redux.connect().  This is how you wire your redux 'container' components up to the redux store
+// state injected in the reactApp.jsx <Provider /> container.
+//
+// Top-level containers should listen to pieces of the relevant pieces of the state via the mapStateToProps() transform
+// function.  Note that you shouldn't listen to the *whole* state change (ie `(state) => state` is an antipattern) --
+// just the parts of the state relevant to the 'container' component. See the react-redux documentation for details.
+//
+// Actions can be injected with the mapDispatchToActions() transform function.
 export default connect(
+  // mapStateToProps():
   state => ({ widgetList: state.widgetList }),
+
+  // mapDispatchToProps(): This is how you connect your imported actions to the dispatch function
   dispatch => ({
     onAddClick: () => dispatch(addWidget(Math.random())),
     onRemoveClick: i => dispatch(removeWidget(i)),
   }),
+
+// and wrap the WidgetList container component:
 )(WidgetList);
