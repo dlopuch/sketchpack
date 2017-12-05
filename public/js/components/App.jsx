@@ -1,11 +1,53 @@
 import React from 'react';
 
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+} from 'reactstrap';
+
 import WidgetList from './WidgetList';
 import Counter from './Counter';
 
+class DemoNavbar extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false,
+    };
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
+
+  render() {
+    return (
+      <Navbar>
+        <NavbarBrand>React App!</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              This text was rendered by a demo react component!
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+}
 
 const App = () => (
   <div>
+    <DemoNavbar />
     <div>
       <h1>React App!</h1>
       <p>
@@ -32,7 +74,7 @@ const App = () => (
 
       <Counter />
 
-      <WidgetList styleViolation={ 'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
+      <WidgetList styleViolation={'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing'} />
 
     </div>
 

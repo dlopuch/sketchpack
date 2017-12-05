@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
   PLUGINS.push(
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     })
   );
@@ -78,7 +78,7 @@ module.exports = {
   },
   devServer: {
     contentBase: './public/',
-    
+
     // Trying to get hotloading to work.  Not quite there yet.
     //hot: true,
     //inline: true
