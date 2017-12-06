@@ -12,7 +12,11 @@ Webpack+React+Redux+Babel frontend boilerplate for javascript sketching.  Includ
 This boilerplate also includes frameworks that need boilerplate webpack config:
 - **React** (with production minification and example react app)
 - **Redux** app with some helpers (`react-redux`, `redux-actions`, `redux-thunk` for async actions)
-- **LESS** compiling for CSS that becomes maintainable
+- **SASS** compiling for CSS that becomes maintainable
+- **Bootstrap** for pretty front-ends
+  - Uses **[reactstrap](https://reactstrap.github.io)** for React'ified Boostrap 4 components
+  - Has a dependency on **Bootstrap 4**, but only to build the Bootstrap CSS (reactstrap doesn't include CSS ports).
+  Doesn't use any Bootstrap javascript or jquery
 
 
 # Try It!
