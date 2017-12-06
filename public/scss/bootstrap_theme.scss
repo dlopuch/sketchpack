@@ -3,8 +3,18 @@ body {
   padding-top: 3.5rem;
 }
 
-// Bootstrap override
+// Bootstrap overrides/theming
+// See https://getbootstrap.com/docs/4.0/getting-started/theming/
 $body-bg: #FFF;
+
+$theme-colors: (
+  "primary": #BBE257,
+  "secondary": #3F4237,
+  "danger": #D87150,
+  "warning": #E7B358,
+  "success": #DBE7B1,
+  "info": #7F9AAE
+);
 
 // Keep this last
 @import "node_modules/bootstrap/scss/bootstrap";

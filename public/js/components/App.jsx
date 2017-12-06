@@ -11,6 +11,8 @@ import {
   Container,
   Jumbotron,
 
+  Badge,
+
   Row,
   Col,
 } from 'reactstrap';
@@ -38,8 +40,8 @@ class DemoNavbar extends React.Component {
 
   render() {
     return (
-      <Navbar expand="md" color="info" dark fixed="top">
-        <NavbarBrand href="#">sketchpack</NavbarBrand>
+      <Navbar expand="md" color="secondary" dark fixed="top">
+        <NavbarBrand href="#" className="text-primary">sketchpack</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <span className="navbar-text">
@@ -67,14 +69,19 @@ const App = () => (
         <Container>
           <h1 className="display-3">React App</h1>
           <p className="lead">
-            Welcome to my Webpack+React+Redux+Babel sketchpack boilerplate, now +Bootstrap.
+            Welcome to my
+            &nbsp;<Badge color="primary">Webpack</Badge>+
+            <Badge color="secondary">React</Badge>+
+            <Badge color="danger">Redux</Badge>+
+            <Badge color="warning">Babel</Badge> sketchpack boilerplate, now
+            +<Badge color="success">Bootstrap</Badge>
           </p>
           <hr className="my-2" />
           <p>
             {es6content}
           </p>
           {process.env.NODE_ENV === 'production' ? (null) : (
-            <p>
+            <p className="text-warning">
               And this block will get minified away in prod if react minification is working properly! <br />
               (Try it for yourself by running: <tt>NODE_ENV=production npm run start:dev</tt>)
             </p>
