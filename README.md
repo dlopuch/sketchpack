@@ -1,5 +1,5 @@
 # sketchpack
-Webpack+React+Redux+Babel frontend boilerplate for javascript sketching.  Includes:
+Webpack+Babel+React+Redux+SASS+Bootstrap frontend boilerplate for javascript sketching.  Includes:
 
 - npm workflow for dependencies
 - **Webpack** for building your CommonJS or RequireJS files
