@@ -109,7 +109,7 @@ const App = () => (
 
           <Col md="4">
             <h2>Widget List Demo</h2>
-            <WidgetList styleViolation={'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing'} />
+            <WidgetList styleViolation={ 'easter egg: linting also runs in JSX files... this piece fails react/jsx-curly-spacing' } />
           </Col>
         </Row>
       </Container>
