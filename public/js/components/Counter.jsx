@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { Button, ButtonGroup } from 'reactstrap';
+
 import { increment, decrement } from '../actions/counterActions';
 
 const Counter = React.createClass({
@@ -16,8 +18,12 @@ const Counter = React.createClass({
         <p>
           <b>Counter</b>: This is a simple counter with two simple actions:
         </p>
-        <button onClick={this.props.onIncrement}>Add</button>
-        <button onClick={this.props.onDecrement}>Sub</button>
+
+        <ButtonGroup>
+          <Button color="primary" onClick={this.props.onIncrement}>Add</Button>
+          <Button color="primary" onClick={this.props.onDecrement}>Sub</Button>
+        </ButtonGroup>
+
         <p>Counter: {this.props.value}</p>
       </div>
     );
