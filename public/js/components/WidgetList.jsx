@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button, ButtonGroup } from 'reactstrap';
 
 import { addWidget, asyncAddWidget, removeWidget } from '../actions/widgetListActions';
 
@@ -16,8 +17,12 @@ const WidgetList = React.createClass({
         <p>
           <b>WidgetList</b>: This is a list of things:
         </p>
-        <button onClick={this.props.onAddClick}>Add</button>
-        <button onClick={this.props.onAddAsyncClick} disabled={this.props.widgetListState.isFetching}>Add Async</button>
+
+        <ButtonGroup>
+          <Button color="primary" onClick={this.props.onAddClick}>Add</Button>
+          <Button color="primary" onClick={this.props.onAddAsyncClick} disabled={this.props.widgetListState.isFetching}>Add Async</Button>
+        </ButtonGroup>
+
         <ul>
           {this.props.widgetListState.list.map((widget, i) => (
             <WidgetItem key={JSON.stringify(widget)} itemId={i} widget={widget} onRemoveClick={this.props.onRemoveClick} />
@@ -41,7 +46,7 @@ const WidgetItem = React.createClass({
     return (
       <li>
         {JSON.stringify(this.props.widget)}
-        <button onClick={this.onRemove}>X</button>
+        <Button color="danger" size="sm" className="ml-1" outline onClick={this.onRemove}>X</Button>
       </li>
     );
   },

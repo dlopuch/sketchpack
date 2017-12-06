@@ -1,0 +1,10 @@
+body {
+  // Add padding to body to account for fixed navbar
+  padding-top: 3.5rem;
+}
+
+// Bootstrap override
+$body-bg: #FFF;
+
+// Keep this last
+@import "node_modules/bootstrap/scss/bootstrap";

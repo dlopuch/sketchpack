@@ -1,3 +1,6 @@
+// Bootstrap SASS dependencies:
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 const APP_ROOT = __dirname + '/public/js';
 
@@ -18,8 +21,8 @@ if (process.env.NODE_ENV === 'production') {
   PLUGINS.push(
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     })
   );
 }
@@ -28,11 +31,11 @@ module.exports = {
   context: APP_ROOT,
   entry: {
     app: 'main.js',
-    alternateApp: 'main-alternate.js' // for demo only, remove or replace with different entry file if multiple entry files.
+    alternateApp: 'main-alternate.js', // for demo only, remove or replace with different entry file if multiple entry files.
   },
   output: {
     path: __dirname + '/public/dist/',
-    filename: 'bundle.[name].js'
+    filename: 'bundle.[name].js',
   },
   module: {
     rules: [
@@ -41,32 +44,39 @@ module.exports = {
         test: /\.jsx?$/,
         enforce: 'pre',
         loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
 
       // .js and .jsx: convert with babel
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
 
-      // Put .less inline in package (TODO: switch to SASS)
+      // SASS CSS
       {
-        test: /\.less$/,
+        test: /\.scss$/,
         use: [
-          { loader: "style-loader" }, // creates style nodes from JS strings
-          { loader: "css-loader" }, // translates CSS into CommonJS
-          { loader: "less-loader", options: {} } // compiles Less to CSS
+          { loader: 'style-loader' }, // creates style nodes from JS strings
+          { loader: 'css-loader' }, // translates CSS into CommonJS
+          {
+            loader: 'postcss-loader', // Run post css actions
+            options: {
+              // post css plugins, can be exported to postcss.config.
+              plugins: () => [precss, autoprefixer],
+            },
+          },
+          { loader: 'sass-loader' }, // compiles SASS to CSS
         ],
       },
 
       // Needed to load graphics in less, eg Bootstrap
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: 'url-loader?limit=100000'
-      }
-    ]
+        loader: 'url-loader?limit=100000',
+      },
+    ],
   },
   plugins: PLUGINS,
   resolve: {
@@ -80,9 +90,9 @@ module.exports = {
     contentBase: './public/',
 
     // Trying to get hotloading to work.  Not quite there yet.
-    //hot: true,
-    //inline: true
+    // hot: true,
+    // inline: true
     // also: need to enable special script in index.html
   },
-  devtool: '#inline-source-map'
+  devtool: '#inline-source-map',
 };
