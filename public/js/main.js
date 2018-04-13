@@ -8,7 +8,7 @@ const reactApp = require('./reactApp.jsx');
 require('../scss/bootstrap_theme.scss');
 
 window.onload = function onload() {
-  console.log('not so fast, FIXME: this line is a linting violation (no semicolon)');
+  console.log('not so fast, FIXME: this line is a linting violation (no semicolon)')
 
   reactApp();
 };
