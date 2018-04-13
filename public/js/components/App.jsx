@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 
 import {
   Collapse,
@@ -83,7 +84,7 @@ const App = () => (
           {process.env.NODE_ENV === 'production' ? (null) : (
             <p className="text-warning">
               And this block will get minified away in prod if react minification is working properly! <br />
-              (Try it for yourself by running: <tt>NODE_ENV=production npm run start:dev</tt>)
+              (Try it for yourself by running: <tt>NODE_ENV=production npm run start</tt>)
             </p>
           )}
         </Container>
@@ -118,4 +119,4 @@ const App = () => (
 );
 
 
-export default App;
+export default hot(module)(App);

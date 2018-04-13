@@ -20,7 +20,7 @@ This boilerplate also includes frameworks that need boilerplate webpack config:
 
 
 # Try It!
-`npm install`, then `npm run start:dev`, then [localhost:8080](http://localhost:8080).
+`npm install`, then `npm run start`, then [localhost:8080](http://localhost:8080).
 Note the linting demo.
 
 

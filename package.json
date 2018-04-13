@@ -4,7 +4,7 @@
   "description": "Using webpack for javascript sketches",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack-dev-server",
+    "start": "webpack-dev-server --hot --history-api-fallback --config webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "release": "echo \"\n\n================\n================\nSTARTING RELEASE BUILD INTO gh-pages BRANCH...\n\" && git checkout gh-pages && git merge master && NODE_ENV=production webpack --optimize-minimize --devtool none && cp public/dist/bundle.app.js ./ && cp public/index.html ./ && ON_DONE_MSG=\"\n\n================\nRELEASED! Ready to commit and push up.\" echo $ON_DONE_MSG"
   },
@@ -49,11 +49,14 @@
   },
   "dependencies": {
     "autoprefixer": "^7.2.1",
+    "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.0",
     "jquery": "^1.9.1",
     "precss": "^2.0.0",
+    "prop-types": "^15.6.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-hot-loader": "^4.0.1",
     "react-redux": "^5.0.6",
     "reactstrap": "^5.0.0",
     "redux": "^3.7.2",

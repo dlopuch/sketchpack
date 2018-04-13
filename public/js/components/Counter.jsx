@@ -1,16 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Button, ButtonGroup } from 'reactstrap';
 
 import { increment, decrement } from '../actions/counterActions';
 
-const Counter = React.createClass({
-  propTypes: {
-    value: React.PropTypes.number.isRequired,
-    onIncrement: React.PropTypes.func.isRequired,
-    onDecrement: React.PropTypes.func.isRequired,
-  },
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
   render() {
     return (
@@ -27,8 +28,14 @@ const Counter = React.createClass({
         <p>Counter: {this.props.value}</p>
       </div>
     );
-  },
-});
+  }
+}
+
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  onDecrement: PropTypes.func.isRequired,
+};
 
 // Note use of react-redux.connect().  This is how you wire your redux 'container' components up to the redux store
 // state injected in the reactApp.jsx <Provider /> container.
