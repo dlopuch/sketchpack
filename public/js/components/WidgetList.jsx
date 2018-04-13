@@ -1,15 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, ButtonGroup } from 'reactstrap';
 
 import { addWidget, asyncAddWidget, removeWidget } from '../actions/widgetListActions';
 
-const WidgetList = React.createClass({
-  propTypes: {
-    widgetListState: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-    onAddClick: React.PropTypes.func.isRequired,
-    onRemoveClick: React.PropTypes.func.isRequired,
-  },
+class WidgetList extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
 
   render() {
     return (
@@ -34,13 +35,27 @@ const WidgetList = React.createClass({
         }
       </div>
     );
-  },
-});
+  }
+}
 
-const WidgetItem = React.createClass({
+WidgetList.propTypes = {
+  widgetListState: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  onAddClick: PropTypes.func.isRequired,
+  onAddAsyncClick: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired,
+};
+
+
+class WidgetItem extends React.Component { // eslint-disable-line react/no-multi-comp
+  constructor(props) {
+    super(props);
+
+    this.onRemove = this.onRemove.bind(this);
+  }
+
   onRemove() {
     this.props.onRemoveClick(this.props.itemId);
-  },
+  }
 
   render() {
     return (
@@ -49,8 +64,15 @@ const WidgetItem = React.createClass({
         <Button color="danger" size="sm" className="ml-1" outline onClick={this.onRemove}>X</Button>
       </li>
     );
-  },
-});
+  }
+}
+
+WidgetItem.propTypes = {
+  itemId: PropTypes.number.isRequired,
+  widget: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+
+  onRemoveClick: PropTypes.func.isRequired,
+};
 
 
 // Note use of react-redux.connect().  This is how you wire your redux 'container' components up to the redux store

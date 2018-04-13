@@ -1,3 +1,5 @@
+import 'babel-polyfill'; // IE11 doesn't support Promise's... get a full ES2015 environment.
+
 const reactApp = require('./reactApp.jsx');
 
 
