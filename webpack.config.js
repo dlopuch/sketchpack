@@ -1,8 +1,10 @@
+const path = require('path');
+
 // Bootstrap SASS dependencies:
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
-const APP_ROOT = __dirname + '/public/js';
+const APP_ROOT = path.resolve(__dirname, 'public/js');
 
 const webpack = require('webpack');
 
@@ -23,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
-    })
+    }),
   );
 }
 
@@ -34,7 +36,7 @@ module.exports = {
     alternateApp: 'main-alternate.js', // for demo only, remove or replace with different entry file if multiple entry files.
   },
   output: {
-    path: __dirname + '/public/dist/',
+    path: path.resolve(__dirname, 'dist/'),
     filename: 'bundle.[name].js',
   },
   module: {
@@ -80,6 +82,15 @@ module.exports = {
   },
   plugins: PLUGINS,
   resolve: {
+    alias: {
+      // fun fact: eslint doesn't complain about any of these aliased imports
+      // (eg 'img/xxx') because eslint was rigged with the
+      // webpack 'import/resolver'.  See .eslintrc.js
+      img: path.resolve(__dirname, 'public/img/'),
+      actions: path.resolve(__dirname, 'public/js/actions'),
+      comp: path.resolve(__dirname, 'public/js/components'),
+      reducers: path.resolve(__dirname, 'public/js/reducers'),
+    },
     modules: [
       APP_ROOT,
       'node_modules',
@@ -89,10 +100,8 @@ module.exports = {
   devServer: {
     contentBase: './public/',
 
-    // Trying to get hotloading to work.  Not quite there yet.
-    // hot: true,
-    // inline: true
-    // also: need to enable special script in index.html
+    // Hotloading works just for React components with react-hot-loader.  Additional integrations needed for redux, css, etc.
+    hot: true,
   },
   devtool: '#inline-source-map',
 };
